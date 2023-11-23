@@ -73,7 +73,7 @@
                 Deseja realmente apagar o paciente?
             </div>
             <div class="modal-footer">
-                <form asp-action="excluir">
+                <form asp-action="deletar" method="post">
                     <input type="hidden" name="id" id="key" />
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
                     <button type="submit" class="btn btn-danger">Sim</button>

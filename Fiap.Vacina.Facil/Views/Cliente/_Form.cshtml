@@ -2,23 +2,23 @@
 
 <div class="col-md-6">
     <label asp-for="Nome">Nome</label>
-    <input asp-for="Nome" class="form-control">
+    <input asp-for="Nome" class="form-control" value="@Model?.Nome">
 </div>
 <div class="col-md-6">
     <label asp-for="Email">Email</label>
-    <input asp-for="Email" class="form-control">
+    <input asp-for="Email" class="form-control" value="@Model?.Email">
 </div>
 <div class="col-md-6">
     <label asp-for="Telefone">Telefone</label>
-    <input asp-for="Telefone" class="form-control">
+    <input asp-for="Telefone" class="form-control" value="@Model?.Telefone">
 </div>
 <div class="col-md-6">
     <label asp-for="Cpf">CPF</label>
-    <input asp-for="Cpf" class="form-control">
+    <input asp-for="Cpf" class="form-control" value="@Model?.Cpf">
 </div>
 <div class="col-md-6">
     <label asp-for="DataNascimento"></label>
-    <input asp-for="DataNascimento" class="form-control">
+    <input asp-for="DataNascimento" class="form-control" value="@Model?.DataNascimento">
 </div>
 <div class="col-md-6">
     <label asp-for="SituacaoCliente"></label>
@@ -29,15 +29,15 @@
 </div>
 <div class="col-md-4">
     <label asp-for="Endereco.Logradouro">Logradouro</label>
-    <input asp-for="Endereco.Logradouro" class="form-control">
+    <input asp-for="Endereco.Logradouro" class="form-control" value="@Model?.Endereco.Logradouro">
 </div>
 <div class="col-md-2">
     <label asp-for="Endereco.Numero">Número</label>
-    <input asp-for="Endereco.Numero" class="form-control">
+    <input asp-for="Endereco.Numero" class="form-control" value="@Model?.Endereco.Numero">
 </div>
 <div class="col-md-2">
     <label asp-for="Endereco.Cep">CEP</label>
-    <input asp-for="Endereco.Cep" class="form-control">
+    <input asp-for="Endereco.Cep" class="form-control" value="@Model?.Endereco.Cep">
 </div>
 <div class="col-md-3">
     <label asp-for="Endereco.SituacaoEndereco"></label>
