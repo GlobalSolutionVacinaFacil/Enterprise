@@ -1,0 +1,48 @@
+﻿@model Cliente
+
+<div class="col-md-6">
+    <label asp-for="Nome">Nome</label>
+    <input asp-for="Nome" class="form-control">
+</div>
+<div class="col-md-6">
+    <label asp-for="Email">Email</label>
+    <input asp-for="Email" class="form-control">
+</div>
+<div class="col-md-6">
+    <label asp-for="Telefone">Telefone</label>
+    <input asp-for="Telefone" class="form-control">
+</div>
+<div class="col-md-6">
+    <label asp-for="Cpf">CPF</label>
+    <input asp-for="Cpf" class="form-control">
+</div>
+<div class="col-md-6">
+    <label asp-for="DataNascimento"></label>
+    <input asp-for="DataNascimento" class="form-control">
+</div>
+<div class="col-md-6">
+    <label asp-for="SituacaoCliente"></label>
+    <select asp-for="SituacaoCliente" class="form-select"
+            asp-items="@Html.GetEnumSelectList<SituacaoCliente>()">
+        <option>Selecione</option>
+    </select>
+</div>
+<div class="col-md-4">
+    <label asp-for="Endereco.Logradouro">Logradouro</label>
+    <input asp-for="Endereco.Logradouro" class="form-control">
+</div>
+<div class="col-md-2">
+    <label asp-for="Endereco.Numero">Número</label>
+    <input asp-for="Endereco.Numero" class="form-control">
+</div>
+<div class="col-md-2">
+    <label asp-for="Endereco.Cep">CEP</label>
+    <input asp-for="Endereco.Cep" class="form-control">
+</div>
+<div class="col-md-3">
+    <label asp-for="Endereco.SituacaoEndereco"></label>
+    <select asp-for="Endereco.SituacaoEndereco" class="form-select"
+            asp-items="@Html.GetEnumSelectList<SituacaoEndereco>()">
+        <option>Selecione</option>
+    </select>
+</div>
