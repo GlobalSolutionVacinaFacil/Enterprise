@@ -75,7 +75,7 @@ namespace Fiap.Vacina.Facil.Controllers
                 var cliente = _context.Clientes.Where(c => c.ClienteId == id).FirstOrDefault();
                 cliente.Endereco = _context.Enderecos.Where(e => e.EnderecoId == cliente.EnderecoId).FirstOrDefault();
 
-                if(cliente == null)
+                if (cliente == null)
                 {
                     TempData["msg"] = "Cliente não encontrado!";
                     return RedirectToAction("Index");
@@ -106,5 +106,25 @@ namespace Fiap.Vacina.Facil.Controllers
                 return View(cliente);
             }
         }
+
+        public IActionResult Dashboard()
+        {
+            try
+            {
+                var ativos = _context.Clientes.Where(c => c.SituacaoCliente == SituacaoCliente.ATIVO).Count();
+                var inativos = _context.Clientes.Where(c => c.SituacaoCliente == SituacaoCliente.INATIVO).Count();
+
+                ViewBag.ClientesAtivos = ativos;
+                ViewBag.ClientesInativos = inativos;
+            }
+            catch (Exception ex)
+            {
+                TempData["msg"] = "Erro!";
+                return View();
+            }
+
+            return View();
+        }
     }
 }
+

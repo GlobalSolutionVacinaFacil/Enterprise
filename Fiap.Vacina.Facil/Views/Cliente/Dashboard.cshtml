@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+
+<form class="d-flex mb-3">
+    <button asp-action="cadastrar" class="btn btn-primary me-2">Cadastrar Cliente</button>
+    <button asp-action="Index" class="btn btn-info me-2">Listar Cliente</button>
+</form>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Clientes Ativos</h5>
+                        @if (ViewBag.ClientesAtivos > 0)
+                        {
+                            <p class="card-text">@ViewBag.ClientesAtivos</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">0</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Clientes Inativos</h5>
+                        @if (ViewBag.ClientesInativos > 0)
+                        {
+                            <p class="card-text">@ViewBag.ClientesInativos</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">0</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
