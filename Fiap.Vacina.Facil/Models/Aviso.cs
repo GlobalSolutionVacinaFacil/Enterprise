@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+using Fiap.Vacina.Facil.Persistencia;
 
 namespace Fiap.Vacina.Facil.Models
 {
@@ -23,8 +25,11 @@ namespace Fiap.Vacina.Facil.Models
         [MaxLength(200, ErrorMessage = "O campo deve ter no 100 caracteres.")]
         public string? Descricao { get; set; }
 
-        public Cliente Cliente { get; set; }
-        public int ClienteId { get; set; }
-        
+       public IList<ClienteAviso> ClienteAvisos { get; set; }
+
+       public Cliente Cliente { get; set; }
+
+       private VacinaFacilContext _context;
+
     }
 }

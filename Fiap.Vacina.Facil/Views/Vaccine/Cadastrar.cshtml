@@ -1,0 +1,46 @@
+﻿@model Vaccine
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar Vacina</h1>
+
+@if(TempData["msg"] != null) 
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+<form class="d-flex mb-3">
+    <button asp-action="Index" class="btn btn-info me-2">Listar Vacinas</button>
+</form>
+
+<form asp-action="cadastrar">
+
+    <div class="col-md-6">
+        <label asp-for="Nome">Nome</label>
+        <input asp-for="Nome" class="form-control" value="@Model?.Nome">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Composicao">Composição</label>
+        <input asp-for="Composicao" class="form-control" value="@Model?.Composicao">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="Intervalo">Intervalo de meses para a próxima dose</label>
+        <input asp-for="Intervalo" class="form-control" value="@Model?.Intervalo">
+    </div>
+    <div class="col-md-6">
+        <label asp-for="DoseVacina">Dose da Vacina</label>
+        <select asp-for="DoseVacina" class="form-select"
+                asp-items="@Html.GetEnumSelectList<DoseVacina>()">
+            <option>Selecione</option>
+        </select>
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-primary">Cadastrar</button>
+    </div>
+
+</form>

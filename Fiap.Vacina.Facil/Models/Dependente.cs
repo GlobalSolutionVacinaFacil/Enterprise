@@ -23,7 +23,6 @@ namespace Fiap.Vacina.Facil.Models
         public Cliente Cliente { get; set; }
         public int ClienteId { get; set; }
 
-        public IList<DependenteVaccine> DependenteVaccine { get; set; }
 
     }
 }

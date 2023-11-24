@@ -1,0 +1,63 @@
+﻿@model Vaccine
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard de Vacinas</h1>
+
+<form class="d-flex mb-3">
+    <button asp-action="Index" class="btn btn-info me-2">Listar Vacinas</button>
+</form>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Vacinas Unique</h5>
+                        @if (ViewBag.VaccinesUnique > 0)
+                        {
+                            <p class="card-text">@ViewBag.VaccinesUnique</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">0</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Vacinas Pair</h5>
+                        @if (ViewBag.VaccinesPair > 0)
+                        {
+                            <p class="card-text">@ViewBag.VaccinesPair</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">0</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Vacinas Triple</h5>
+                        @if (ViewBag.VaccinesTriple > 0)
+                        {
+                            <p class="card-text">@ViewBag.VaccinesTriple</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">0</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

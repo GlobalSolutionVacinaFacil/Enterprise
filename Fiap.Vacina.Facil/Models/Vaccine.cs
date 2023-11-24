@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -30,14 +31,9 @@ namespace Fiap.Vacina.Facil.Models
         [Required(ErrorMessage = "Dose da Vacina é obrigatório")]
         public DoseVacina DoseVacina { get; set; }
 
-        public IList<Fabricante> Fabricantes { get; set; }
-
-        public Dependente Dependente { get; set; }
-
-        public int DependenteId { get; set; }
-
-        public IList<DependenteVaccine> DependenteVaccine { get; set; }
-
+        public Fabricante Fabricantes { get; set; }
+        
+        public int FabricanteId { get; set; }
 
     }
 

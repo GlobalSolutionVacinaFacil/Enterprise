@@ -1,0 +1,26 @@
+﻿@model List<Aviso>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Avisos</h1>
+
+<table class="table">
+    <tr>
+        <th>Data do Aviso</th>
+        <th>Descrição</th>
+        <th>Cliente</th>
+        <th>Cpf</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DataAviso.ToShortDateString()</td>
+            <td>@item.Descricao</td>
+            <td>@item.Cliente.Nome</td>
+            <th>@item.Cliente.Cpf</th>
+        </tr>
+    }
+</table>
+

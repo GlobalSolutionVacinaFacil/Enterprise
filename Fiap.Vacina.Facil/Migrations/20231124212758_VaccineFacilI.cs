@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Fiap.Vacina.Facil.Migrations
 {
     /// <inheritdoc />
-    public partial class VcFac : Migration
+    public partial class VaccineFacilI : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,6 +28,22 @@ namespace Fiap.Vacina.Facil.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "T_VacinaFacil_Vaccine",
+                columns: table => new
+                {
+                    VaccineId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Composicao = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Intervalo = table.Column<int>(type: "int", nullable: false),
+                    DoseVacina = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_T_VacinaFacil_Vaccine", x => x.VaccineId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "T_VacinaFacil_Cliente",
                 columns: table => new
                 {
@@ -35,7 +51,7 @@ namespace Fiap.Vacina.Facil.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Telefone = table.Column<string>(type: "nvarchar(11)", maxLength: 11, nullable: false),
+                    Telefone = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
                     Cpf = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: false),
                     DataNascimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Situacao = table.Column<int>(type: "int", nullable: false),
@@ -50,6 +66,26 @@ namespace Fiap.Vacina.Facil.Migrations
                         principalTable: "T_VacinaFacil_End",
                         principalColumn: "EnderecoId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "T_VacinaFacil_Fabricante",
+                columns: table => new
+                {
+                    FabricanteId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Cnpj = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: false),
+                    VaccineId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_T_VacinaFacil_Fabricante", x => x.FabricanteId);
+                    table.ForeignKey(
+                        name: "FK_T_VacinaFacil_Fabricante_T_VacinaFacil_Vaccine_VaccineId",
+                        column: x => x.VaccineId,
+                        principalTable: "T_VacinaFacil_Vaccine",
+                        principalColumn: "VaccineId");
                 });
 
             migrationBuilder.CreateTable(
@@ -95,29 +131,6 @@ namespace Fiap.Vacina.Facil.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "T_VacinaFacil_Vaccine",
-                columns: table => new
-                {
-                    VaccineId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Composicao = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Intervalo = table.Column<int>(type: "int", nullable: false),
-                    DoseVacina = table.Column<int>(type: "int", nullable: false),
-                    DependenteId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_T_VacinaFacil_Vaccine", x => x.VaccineId);
-                    table.ForeignKey(
-                        name: "FK_T_VacinaFacil_Vaccine_T_VacinaFacil_Dependente_DependenteId",
-                        column: x => x.DependenteId,
-                        principalTable: "T_VacinaFacil_Dependente",
-                        principalColumn: "DependenteId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "DependenteVaccines",
                 columns: table => new
                 {
@@ -141,26 +154,6 @@ namespace Fiap.Vacina.Facil.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "T_VacinaFacil_Fabricante",
-                columns: table => new
-                {
-                    FabricanteId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Cnpj = table.Column<string>(type: "nvarchar(14)", maxLength: 14, nullable: false),
-                    VaccineId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_T_VacinaFacil_Fabricante", x => x.FabricanteId);
-                    table.ForeignKey(
-                        name: "FK_T_VacinaFacil_Fabricante_T_VacinaFacil_Vaccine_VaccineId",
-                        column: x => x.VaccineId,
-                        principalTable: "T_VacinaFacil_Vaccine",
-                        principalColumn: "VaccineId");
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_DependenteVaccines_VaccineId",
                 table: "DependenteVaccines",
@@ -180,11 +173,6 @@ namespace Fiap.Vacina.Facil.Migrations
                 name: "IX_T_VacinaFacil_Fabricante_VaccineId",
                 table: "T_VacinaFacil_Fabricante",
                 column: "VaccineId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_T_VacinaFacil_Vaccine_DependenteId",
-                table: "T_VacinaFacil_Vaccine",
-                column: "DependenteId");
         }
 
         /// <inheritdoc />
@@ -200,10 +188,10 @@ namespace Fiap.Vacina.Facil.Migrations
                 name: "T_VacinaFacil_Fabricante");
 
             migrationBuilder.DropTable(
-                name: "T_VacinaFacil_Vaccine");
+                name: "T_VacinaFacil_Dependente");
 
             migrationBuilder.DropTable(
-                name: "T_VacinaFacil_Dependente");
+                name: "T_VacinaFacil_Vaccine");
 
             migrationBuilder.DropTable(
                 name: "T_VacinaFacil_Cliente");

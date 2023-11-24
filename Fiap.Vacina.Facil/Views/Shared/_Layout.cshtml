@@ -34,7 +34,8 @@
             <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-action="Index" asp-controller="Home">Home</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-action="Index" asp-controller="cliente">Cliente</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Vacina</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-action="Index" asp-controller="vaccine">Vacina</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-action="Index" asp-controller="aviso">Avisos</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
         </div>
@@ -44,6 +45,10 @@
             </main>
         </div>
     </div>
+
+    <footer class="border-top footer text-muted">
+       <div></div>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

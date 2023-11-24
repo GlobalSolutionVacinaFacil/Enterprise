@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fiap.Vacina.Facil.Migrations
 {
     [DbContext(typeof(VacinaFacilContext))]
-    [Migration("20231123204450_VcFac")]
-    partial class VcFac
+    [Migration("20231124212758_VaccineFacilI")]
+    partial class VaccineFacilI
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -86,8 +86,8 @@ namespace Fiap.Vacina.Facil.Migrations
 
                     b.Property<string>("Telefone")
                         .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.HasKey("ClienteId");
 
@@ -210,9 +210,6 @@ namespace Fiap.Vacina.Facil.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("DependenteId")
-                        .HasColumnType("int");
-
                     b.Property<int>("DoseVacina")
                         .HasColumnType("int");
 
@@ -225,8 +222,6 @@ namespace Fiap.Vacina.Facil.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("VaccineId");
-
-                    b.HasIndex("DependenteId");
 
                     b.ToTable("T_VacinaFacil_Vaccine");
                 });
@@ -288,17 +283,6 @@ namespace Fiap.Vacina.Facil.Migrations
                     b.HasOne("Fiap.Vacina.Facil.Models.Vaccine", null)
                         .WithMany("Fabricantes")
                         .HasForeignKey("VaccineId");
-                });
-
-            modelBuilder.Entity("Fiap.Vacina.Facil.Models.Vaccine", b =>
-                {
-                    b.HasOne("Fiap.Vacina.Facil.Models.Dependente", "Dependente")
-                        .WithMany()
-                        .HasForeignKey("DependenteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Dependente");
                 });
 
             modelBuilder.Entity("Fiap.Vacina.Facil.Models.Cliente", b =>

@@ -18,7 +18,6 @@ namespace Fiap.Vacina.Facil.Models
 
         [Required]
         [MaxLength(14, ErrorMessage = "O campo deve ter no 14 caracteres.")]
-        [RegularExpression(@"^\d{14}$")]
         public string? Cnpj { get; set; }
 
     }

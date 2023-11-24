@@ -1,10 +1,10 @@
-﻿@model List<Cliente>
+﻿@model List<Vaccine>
 
 @{
-	ViewData["Title"] = "Index";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Clientes</h1>
+<h1>Vacinas</h1>
 
 @if (TempData["msg"] != null)
 {
@@ -14,12 +14,12 @@
 }
 
 <form class="d-flex mb-3" asp-action="index" method="get">
-    <input name="filtro" class="form-control me-2" type="search" placeholder="Pesquise o Cliente">
+    <input name="filtro" class="form-control me-2" type="search" placeholder="Pesquise pela Vacina">
     <button class="btn btn-outline-success" type="submit">Pesquisar</button>
 </form>
 
 <form class="d-flex mb-3">
-    <button asp-action="cadastrar" class="btn btn-primary me-2">Cadastrar Cliente</button>
+    <button asp-action="cadastrar" class="btn btn-primary me-2">Cadastrar Vacina</button>
     <button asp-action="dashboard" class="btn btn-info me-2">Dashboard</button>
 </form>
 
@@ -27,12 +27,11 @@
     <thead class="table-light">
         <tr>
             <th scope="col">Nome</th>
-            <th scope="col">Email</th>
-            <th scope="col">Telefone</th>
-            <th scope="col">CPF</th>
-            <th scope="col">Data de Nascimento</th>
-            <th scope="col">Situação do Cliente</th>
-            <th scope="col">CEP do Endereço</th>
+            <th scope="col">Composição</th>
+            <th scope="col">Intervalo</th>
+            <th scope="col">Dose da Vacina</th>
+            <th scope="col">Nome do Fabricante</th>
+            <th scope="col">Cnpj</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -41,21 +40,17 @@
         {
             <tr>
                 <td>@item.Nome</td>
-                <td>@item.Email</td>
-                <td>@item.Telefone</td>
-                <td>@item.Cpf</td>
-                <td>@item.DataNascimento.ToShortDateString()</td>
-                <td>@item.SituacaoCliente</td>
-                <td>@item.Endereco.Cep</td>
+                <td>@item.Composicao</td>
+                <td>@item.Intervalo</td>
+                <td>@item.DoseVacina</td>
+                <td>@item.Fabricantes.Nome</td>
+                <td>@item.Fabricantes.Cnpj</td>
                 <td>
-                    <a asp-action="editar" asp-route-id="@item.ClienteId" class="btn btn-sm btn-outline-info">Editar</a>
+                    <a asp-action="editar" asp-route-id="@item.VaccineId" class="btn btn-sm btn-outline-info">Editar</a>
                     <!-- Button trigger modal -->
-                    <button onclick="key.value = @item.ClienteId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button onclick="key.value = @item.VaccineId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Remover
                     </button>
-                    <a asp-action="dependentes" asp-route-id="@item.ClienteId" class="btn btn-sm btn-outline-dark">Dependentes</a>
-                    <a asp-action="aviso" asp-route-id="@item.ClienteId" class="btn btn-sm btn-warning">Aviso</a>
-                    <a asp-action="endereco" asp-route-id="@item.ClienteId" class="btn btn-sm btn-outline-primary">Endereço</a>
                 </td>
             </tr>
         }
@@ -63,7 +58,7 @@
 </table>
 
 
-<!-- Template para confirmação de remoção do cliente -->
+<!-- Template para confirmação de remoção da Vacina -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -72,7 +67,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Deseja realmente apagar o Cliente?
+                Deseja realmente apagar a Vacina?
             </div>
             <div class="modal-footer">
                 <form asp-action="deletar" method="post">

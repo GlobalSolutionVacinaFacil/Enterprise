@@ -75,7 +75,7 @@ namespace Fiap.Vacina.Facil.Controllers
                 var cliente = _context.Clientes.Where(c => c.ClienteId == id).FirstOrDefault();
                 cliente.Endereco = _context.Enderecos.Where(e => e.EnderecoId == cliente.EnderecoId).FirstOrDefault();
 
-                if (cliente == null)
+                if(cliente == null)
                 {
                     TempData["msg"] = "Cliente não encontrado!";
                     return RedirectToAction("Index");
@@ -119,7 +119,7 @@ namespace Fiap.Vacina.Facil.Controllers
             }
             catch (Exception ex)
             {
-                TempData["msg"] = "Erro!";
+                TempData["msg"] = "Erro na Dashboard!";
                 return View();
             }
 
