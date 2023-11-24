@@ -29,7 +29,5 @@ namespace Fiap.Vacina.Facil.Models
 
        public Cliente Cliente { get; set; }
 
-       private VacinaFacilContext _context;
-
     }
 }
