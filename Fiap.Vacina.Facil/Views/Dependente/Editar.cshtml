@@ -1,0 +1,30 @@
+﻿@model Dependente
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar Dependente</h1>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+<form class="d-flex mb-3">
+    <a href="/dependente?clienteId=@Model.ClienteId" class="btn btn-info me-2">Listar Dependentes</a>
+</form>
+
+<form asp-action="editar">
+
+    <partial name="_Form" model="@Model" />
+    <input asp-for="ClienteId" type="hidden" value="@Model.ClienteId" />
+    <input asp-for="DependenteId" type="hidden" value="@Model.DependenteId" />
+
+    <div class="mt-3">
+        <button class="btn btn-primary">Editar</button>
+    </div>
+
+</form>

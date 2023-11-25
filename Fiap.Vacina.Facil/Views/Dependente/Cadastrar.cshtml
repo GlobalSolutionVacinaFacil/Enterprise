@@ -1,0 +1,29 @@
+﻿@model int
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar Dependente</h1>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+<form class="d-flex mb-3">
+    <a href="/dependente?clienteId=@Model" class="btn btn-info me-2">Listar Dependentes</a>
+</form>
+
+<form asp-action="cadastrar">
+    <partial name="_Form" model="null"/>
+    <input name="ClienteId" type="hidden" value="@Model" />
+
+    <div class="mt-3">
+        <button class="btn btn-primary">Cadastrar</button>
+    </div>
+
+</form>
+

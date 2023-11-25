@@ -113,9 +113,11 @@ namespace Fiap.Vacina.Facil.Controllers
             {
                 var ativos = _context.Clientes.Where(c => c.SituacaoCliente == SituacaoCliente.ATIVO).Count();
                 var inativos = _context.Clientes.Where(c => c.SituacaoCliente == SituacaoCliente.INATIVO).Count();
+                var mediaDependentes = Convert.ToDouble(_context.Dependentes.Count()) / Convert.ToDouble(_context.Clientes.Count());
 
                 ViewBag.ClientesAtivos = ativos;
                 ViewBag.ClientesInativos = inativos;
+                ViewBag.MediaDependentes = mediaDependentes;
             }
             catch (Exception ex)
             {

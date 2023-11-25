@@ -24,10 +24,9 @@ namespace Fiap.Vacina.Facil.Models
         [Column("Ds_Descrição")]
         [MaxLength(200, ErrorMessage = "O campo deve ter no 100 caracteres.")]
         public string? Descricao { get; set; }
-
-       public IList<ClienteAviso> ClienteAvisos { get; set; }
-
-       public Cliente Cliente { get; set; }
+        
+        public Cliente Cliente { get; set; }
+        public int ClienteId { get; set; }
 
     }
 }

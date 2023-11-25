@@ -53,9 +53,9 @@
                     <button onclick="key.value = @item.ClienteId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Remover
                     </button>
-                    <a asp-action="dependentes" asp-route-id="@item.ClienteId" class="btn btn-sm btn-outline-dark">Dependentes</a>
-                    <a asp-action="aviso" asp-route-id="@item.ClienteId" class="btn btn-sm btn-warning">Aviso</a>
-                    <a asp-action="endereco" asp-route-id="@item.ClienteId" class="btn btn-sm btn-outline-primary">Endereço</a>
+                    <a href="/dependente?clienteId=@item.ClienteId" class="btn btn-sm btn-outline-dark">Dependentes</a>
+                    @* <a asp-action="aviso" asp-route-id="@item.ClienteId" class="btn btn-sm btn-warning">Aviso</a>
+                    <a asp-action="endereco" asp-route-id="@item.ClienteId" class="btn btn-sm btn-outline-primary">Endereço</a> *@
                 </td>
             </tr>
         }
